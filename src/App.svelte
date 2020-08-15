@@ -17,6 +17,8 @@
 
 	function addParticipant() {
 		participants = [...participants, addParticipantName];
+		participantsCanWin = [...participantsCanWin, addParticipantName];
+		
 		addParticipantName = "";
 	}
 
