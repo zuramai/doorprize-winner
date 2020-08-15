@@ -13,6 +13,7 @@
 
 	function deleteParticipant(deleteName) {
 		participants = participants.filter(name => name !== deleteName);
+		participantsCanWin = participantsCanWin.filter(name => name !== deleteName);
 	}
 
 	function addParticipant() {
