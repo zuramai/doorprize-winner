@@ -98,9 +98,10 @@
 			</table>
 		</div>
 	</div>
+
+	<p class='text-center my-2 mt-32'>Created by <a href="http://ahmadsaugi.com">Ahmad Saugi</a> &copy;</p>
 </main>
 
-...
 <style>
 	.title {
 		color: #ff3e00;
