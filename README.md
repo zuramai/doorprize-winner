@@ -2,6 +2,9 @@
 
 ![Doorprize Winner App](https://github.com/zuramai/doorprize-winner/blob/master/screenshot.png?raw=true)
 
+## Demo
+You can check the demo <a href="https://doorprize-winner.netlify.app/">here</a> 
+
 ## Quick Start
 1. Clone
 ```bash
