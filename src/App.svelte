@@ -31,8 +31,17 @@
 		let winnerDiv = document.querySelector('.pemenang');
 
 		if(letterCount >= 6) {
-			winnerDiv.style.fontSize = "6rem"
-			winnerDiv.style.lineHeight = "8rem"
+			winnerDiv.style.fontSize = "6rem";
+			winnerDiv.style.lineHeight = "8rem";
+		}
+	}
+
+	// Validate input length to make sure the text doesn't exit the window
+	function validateLength(e,maxLength) {
+		let val = e.originalTarget.value;
+		if(val.length > maxLength){
+			//Listening to keyup event is too late for calling preventDefault
+			e.preventDefault();
 		}
 	}
 
@@ -52,16 +61,16 @@
 		}, 1);
 
 		setTimeout(() => {
-			winner = participantsCanWin[Math.floor(Math.random() * participantsCanWin.length)];;
+			winner = participantsCanWin[Math.floor(Math.random() * participantsCanWin.length)];
 			participantsCanWin = participantsCanWin.filter(name => name !== winner);
 
 			if(winner == undefined) {
 				participantsCanWin = participants;
-				winner = participantsCanWin[Math.floor(Math.random() * participantsCanWin.length)];;
+				winner = participantsCanWin[Math.floor(Math.random() * participantsCanWin.length)];
 			}
 			win = true;
 			searchingWinner = false;
-			clearInterval(acakWaiting)
+			clearInterval(acakWaiting);
 		}, 3000);
 	}
 </script>
@@ -105,7 +114,7 @@
 						<td>{participants.length+1}</td>
 						<td>
 							<form on:submit|preventDefault="{addParticipant}">
-								<input type="text" required placeholder="Masukkan nama baru" class='px-2 py-1 rounded-md border-gray-400 shadow-sm' bind:value={addParticipantName}>
+								<input type="text" on:keydown={e => validateLength(e,20)} required placeholder="Masukkan nama baru" class='px-2 py-1 rounded-md border-gray-400 shadow-sm' bind:value={addParticipantName}>
 								<button type="submit" class="px-2 py-1 bg-teal-600 shadow-md border-0 rounded-md text-white hover:bg-teal-700 hover:shadow-lg transition duration-150">+</button>
 							</form>
 						</td>
