@@ -11,11 +11,13 @@
 
 	let addParticipantName = "";
 
+	// Delete a participant from array
 	function deleteParticipant(deleteName) {
 		participants = participants.filter(name => name !== deleteName);
 		participantsCanWin = participantsCanWin.filter(name => name !== deleteName);
 	}
 
+	// Add participants to array
 	function addParticipant() {
 		participants = [...participants, addParticipantName];
 		participantsCanWin = [...participantsCanWin, addParticipantName];
@@ -23,11 +25,24 @@
 		addParticipantName = "";
 	}
 
+	// Change font size depends on winner size
+	function changeFontSize() {
+		let letterCount = winner.length;
+		let winnerDiv = document.querySelector('.pemenang');
+
+		if(letterCount >= 6) {
+			winnerDiv.style.fontSize = "6rem"
+			winnerDiv.style.lineHeight = "8rem"
+		}
+	}
+
+	// Start random choose winner
 	function acak() {
 		win = false;
 		searchingWinner = true;
 		let i = 0;
 		let acakWaiting = setInterval(() => {
+			changeFontSize()
 			winner = participants[i];
 			if(i == participants.length-1) {
 				i = 0;
@@ -90,7 +105,7 @@
 						<td>{participants.length+1}</td>
 						<td>
 							<form on:submit|preventDefault="{addParticipant}">
-								<input type="text" placeholder="Masukkan nama baru" class='px-2 py-1 rounded-md border-gray-400 shadow-sm' bind:value={addParticipantName}>
+								<input type="text" required placeholder="Masukkan nama baru" class='px-2 py-1 rounded-md border-gray-400 shadow-sm' bind:value={addParticipantName}>
 								<button type="submit" class="px-2 py-1 bg-teal-600 shadow-md border-0 rounded-md text-white hover:bg-teal-700 hover:shadow-lg transition duration-150">+</button>
 							</form>
 						</td>
