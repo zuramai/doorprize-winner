@@ -6,10 +6,11 @@
 You can check the demo <a href="https://doorprize-winner.netlify.app/">here</a> 
 
 ## Quick Start
-1. Clone
+1. Clone & Install Modules
 ```bash
 git clone https://github.com/zuramai/doorprize-winner.git
 cd doorprize-winner
+npm install
 ```
 2. Run the app
 ```bash
