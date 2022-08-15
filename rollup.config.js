@@ -4,12 +4,13 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess'
+import postcss from "rollup-plugin-postcss";
 
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
 	let server;
-	
+
 	function toExit() {
 		if (server) server.kill(0);
 	}
@@ -37,6 +38,9 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		postcss({
+			plugins: []
+		}),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,

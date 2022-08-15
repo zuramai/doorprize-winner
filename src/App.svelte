@@ -1,12 +1,12 @@
 <script>
 	export let name;
-	import Tailwindcss from './Tailwindcss.svelte';
+	import './app.css';
 	
 	let winner = "??";
 	let win = false;
 	let searchingWinner = false;
 
-	let participants = ['Azis','Athar','Ogi'];
+	let participants = ['Ilham', 'Beluga'];
 	let participantsCanWin = participants;
 
 	let addParticipantName = "";
@@ -58,7 +58,7 @@
 			}else{
 				i++;
 			}
-		}, 1);
+		}, 50);
 
 		setTimeout(() => {
 			winner = participantsCanWin[Math.floor(Math.random() * participantsCanWin.length)];
@@ -76,20 +76,19 @@
 </script>
 
 <main>
-	<Tailwindcss />
 	<div class="text-center">
-		<h1 class='title'>UNDIAN DOORPRIZE</h1>
+		<h1 class='title font-bold text-red-600 mt-5'>UNDIAN DOORPRIZE</h1>
 		<p> Pemenang:</p>
-		<h1 class='pemenang' class:text-green-500={win==true}>{winner}</h1>
+		<h1 class='pemenang text-5xl my-8' class:text-green-500={win==true}>{winner}</h1>
 		{#if win==true}
-			<p class="text-center text-green-500">Menang!</p>
+			<p class="text-center text-green-500 text-5xl">Menang!</p>
 		{/if}
 		{#if !searchingWinner}
 		<button  class="mt-5 px-10 py-4 text-lg bg-blue-600 shadow-lg border-0 rounded-md text-white hover:bg-blue-700 hover:shadow-xl transition duration-150" on:click={acak}>Acak Sekarang</button>
 		{/if}
 	</div>
 
-	<div class="container px-5 mx-auto mt-32">
+	<div class="container px-5 mx-auto mt-16">
 		<h3 class='text-2xl '>Daftar Peserta</h3>
 		<div class="overflow-x-auto">
 			<table class='table w-full mt-5'>
@@ -128,34 +127,3 @@
 
 	<p class='text-center my-2 mt-32'>Created by <a href="http://ahmadsaugi.com">Ahmad Saugi</a> &copy;</p>
 </main>
-
-<style>
-	.title {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	.pemenang {
-		font-size: 10rem;
-	}
-	.table tbody tr {
-		@apply  border-b-2 border-gray-200
-	}
-	.table tbody tr:hover {
-		@apply  bg-gray-100;
-	}
-	.table tr th {
-		@apply bg-gray-400;
-	}
-	.table tr th, .table tr td {
-		@apply px-3 py-3 text-lg text-left px-16;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
