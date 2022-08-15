@@ -4,11 +4,11 @@
 .title {
   color: #ff3e00;
   text-transform: uppercase;
-  font-size: 4em;
+  font-size: clamp(2rem, 5vw, 4rem);
 }
 
 .pemenang {
-  font-size: 10rem;
+  font-size: clamp(4rem, 10vw, 10rem) !important;
 }
 .table tbody tr {
   @apply border-b-2 border-gray-200;
@@ -17,15 +17,25 @@
   @apply bg-gray-100;
 }
 .table tr th {
-  @apply bg-gray-400;
+  @apply bg-zinc-200;
 }
 .table tr th,
 .table tr td {
-  @apply px-3 py-3 text-lg text-left px-16;
+  @apply px-3 py-3 text-lg text-left;
+}
+.table tr th:first-child,
+.table tr td:first-child {
+  @apply text-center;
 }
 
 @media (min-width: 640px) {
   main {
     max-width: none;
+  }
+}
+@media (max-width: 767px) {
+  .table tr th,
+  .table tr td {
+    @apply px-3 py-1 text-lg text-left;
   }
 }
